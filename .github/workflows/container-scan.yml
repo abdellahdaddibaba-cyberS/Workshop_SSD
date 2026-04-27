@@ -1,0 +1,37 @@
+name: Container Scanning (Trivy)
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build-and-scan:
+    name: Build and Scan Images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build User Service Image
+        run: docker build -t user-service:latest ./services/user-service
+
+      - name: Scan User Service Image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'user-service:latest'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Build Product Service Image
+        run: docker build -t product-service:latest ./services/product-service
+
+      - name: Scan Product Service Image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'product-service:latest'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
