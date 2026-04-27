@@ -58,3 +58,17 @@ services:
       - .:/src
     command: bandit -r /src
 
+  # --- SCA TOOLS ---
+  sca-trivy:
+    image: aquasec/trivy:latest
+    volumes:
+      - .:/src
+    command: fs /src
+
+  sca-dependency-check:
+    image: owasp/dependency-check:latest
+    volumes:
+      - .:/src
+      - ./odc-data:/usr/share/dependency-check/data
+    command: --project "SecureShop" --scan /src --format "HTML" --out /src/sca-report.html
+
