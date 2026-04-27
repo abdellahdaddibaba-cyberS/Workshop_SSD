@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 const app = express();
 app.use(express.json());
 
-// VULNERABILITY: Hardcoded secret (SAST & Gitleaks should catch this)
+// VULNERABILITY: Hardcoded secret (Gitleaks should catch this AWS pattern)
+const AWS_KEY = "AKIAIMORREDAKE123456"; 
 const JWT_SECRET = 'x8s-9q2-p0m-secret-key-production-001';
 
 app.post('/login', (req, res) => {
