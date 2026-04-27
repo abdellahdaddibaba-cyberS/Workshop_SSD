@@ -3,16 +3,18 @@ import sqlite3
 
 app = Flask(__name__)
 
-# VULNERABILITY: SQL Injection potential (SAST should catch this)
+# FIXED: Using parameterized queries to prevent SQL Injection
 @app.route('/products')
 def get_products():
     category = request.args.get('category')
-    query = f"SELECT * FROM products WHERE category = '{category}'"
     
-    # This is unsafe! bandit/semgrep should flag this.
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute(query)
+    
+    # Use '?' placeholder instead of f-string
+    query = "SELECT * FROM products WHERE category = ?"
+    cursor.execute(query, (category,))
+    
     results = cursor.fetchall()
     return jsonify(results)
 

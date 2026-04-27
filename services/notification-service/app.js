@@ -1,21 +1,18 @@
 const express = require('express');
-const { exec } = require('child_process');
 const app = express();
 app.use(express.json());
 
-// VULNERABILITY: Command Injection (SAST should definitely catch this)
+// FIXED: Using environment variables for SMTP secrets (Runtime Secret Management)
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD || 'dev-smtp-placeholder';
+
 app.post('/notify', (req, res) => {
     const { email, message } = req.body;
     
-    // Unsafe use of exec with user input
-    const command = `echo "Sending to ${email}: ${message}"`;
+    // FIXED: Removed exec() to prevent Command Injection. 
+    // Using a safe console log to simulate sending.
+    console.log(`[Notification] To: ${email} | Content: ${message} | Using Auth: ${SMTP_PASSWORD}`);
     
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            return res.status(500).send(error.message);
-        }
-        res.send('Notification sent');
-    });
+    res.send('Notification processed securely');
 });
 
 const PORT = 8005;

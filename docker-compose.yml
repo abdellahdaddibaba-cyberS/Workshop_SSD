@@ -19,11 +19,15 @@ services:
     build: ./services/user-service
     ports:
       - "8001:8001"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
 
   product-service:
     build: ./services/product-service
     ports:
       - "8002:8002"
+    environment:
+      - DB_PASSWORD=${DB_PASSWORD}
 
   order-service:
     build: ./services/order-service
@@ -34,11 +38,15 @@ services:
     build: ./services/payment-service
     ports:
       - "8004:8004"
+    environment:
+      - RABBITMQ_PASS=${RABBITMQ_PASS}
 
   notification-service:
     build: ./services/notification-service
     ports:
       - "8005:8005"
+    environment:
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
 
   inventory-service:
     build: ./services/inventory-service
