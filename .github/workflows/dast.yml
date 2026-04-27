@@ -14,31 +14,26 @@ env:
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
-    name: OWASP ZAP Scan
+    name: DAST Security Scan
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Start Services
         run: |
-          export JWT_SECRET=test_key
-          export DB_PASSWORD=test_pass
-          export RABBITMQ_PASS=test_pass
-          export SMTP_PASSWORD=test_pass
           docker-compose up -d
 
       - name: Wait for Services
-        run: sleep 60 # Give it plenty of time
+        run: sleep 60
 
-      - name: Run ZAP Baseline Scan (Manual Docker)
+      - name: Run OWASP ZAP
         run: |
-          docker run --network="host" --rm -v $(pwd):/zap/wrk/:rw \
-          ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
-          -t http://localhost:80 \
-          -g gen.conf -r report.html || true
+          # Running ZAP as a simple container command
+          docker run --rm -v $(pwd):/zap/wrk/:rw ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://$(hostname -I | awk '{print $1}'):80 -r report.html || true
 
       - name: Upload DAST Report
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: zap-dast-report
           path: report.html
