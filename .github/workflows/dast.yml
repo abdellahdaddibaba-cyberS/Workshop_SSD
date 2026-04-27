@@ -1,0 +1,33 @@
+name: DAST (Dynamic Application Security Testing)
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: OWASP ZAP Scan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Start Services
+        run: docker-compose up -d
+
+      - name: Wait for Services (Health Check)
+        run: |
+          sleep 30 # Give Nginx and services time to start
+
+      - name: ZAP Scan
+        uses: zaproxy/action-api-scan@v0.6.0
+        with:
+          target: 'http://localhost/api/users/login' # Scanning the entry point
+          format: openapi
+          # We can also use a baseline scan for the whole site
+      
+      - name: Stop Services
+        run: docker-compose down
