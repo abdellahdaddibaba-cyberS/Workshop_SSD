@@ -21,7 +21,7 @@ jobs:
 
       - name: Start Services
         run: |
-          docker-compose up -d
+          docker compose up -d
 
       - name: Wait for Services
         run: sleep 60
@@ -39,4 +39,4 @@ jobs:
           path: report.html
 
       - name: Stop Services
-        run: docker-compose down
+        run: docker compose down
