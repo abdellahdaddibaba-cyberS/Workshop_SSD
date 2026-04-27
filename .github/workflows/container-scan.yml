@@ -4,8 +4,12 @@ on:
   push:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+  security-events: write
+
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Opt-in to Node 24 to resolve warnings
 
 jobs:
   build-and-scan:
@@ -22,7 +26,7 @@ jobs:
         with:
           image-ref: 'user-service:latest'
           format: 'table'
-          exit-code: '0'
+          exit-code: '0' # Force success even if vulnerabilities are found
           severity: 'CRITICAL,HIGH'
 
       - name: Build Product Service Image
@@ -33,5 +37,5 @@ jobs:
         with:
           image-ref: 'product-service:latest'
           format: 'table'
-          exit-code: '0'
+          exit-code: '0' # Force success
           severity: 'CRITICAL,HIGH'
