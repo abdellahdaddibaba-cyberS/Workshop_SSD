@@ -1,0 +1,12 @@
+﻿
+Target: gateway:latest (alpine 3.23.4)
+Type: alpine
+===========================================
+Vulnerability: CVE-2026-27135
+Severity:      HIGH
+Package:       nghttp2-libs
+Installed:     1.68.0-r0
+Fixed Version: 1.68.1
+Title:         nghttp2: nghttp2: Denial of Service via malformed HTTP/2 frames after session termination
+Link:          https://avd.aquasec.com/nvd/cve-2026-27135
+-------------------------------------------

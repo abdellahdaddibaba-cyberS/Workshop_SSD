@@ -1,0 +1,2 @@
+# This file is used to ignore specific fingerprints in Gitleaks.
+# To ignore paths or files, use the [allowlist] configuration in gitleaks.toml instead.

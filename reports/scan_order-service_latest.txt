@@ -1,0 +1,95 @@
+﻿
+Target: order-service:latest (debian 13.4)
+Type: debian
+===========================================
+Vulnerability: CVE-2026-4878
+Severity:      HIGH
+Package:       libcap2
+Installed:     1:2.75-10+b8
+Fixed Version: 
+Title:         libcap: libcap: Privilege escalation via TOCTOU race condition in cap_set_file()
+Link:          https://avd.aquasec.com/nvd/cve-2026-4878
+-------------------------------------------
+Vulnerability: CVE-2025-69720
+Severity:      HIGH
+Package:       libncursesw6
+Installed:     6.5+20250216-2
+Fixed Version: 
+Title:         ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.
+Link:          https://avd.aquasec.com/nvd/cve-2025-69720
+-------------------------------------------
+Vulnerability: CVE-2026-29111
+Severity:      HIGH
+Package:       libsystemd0
+Installed:     257.9-1~deb13u1
+Fixed Version: 
+Title:         systemd: systemd: Arbitrary code execution or Denial of Service via spurious IPC API call data
+Link:          https://avd.aquasec.com/nvd/cve-2026-29111
+-------------------------------------------
+Vulnerability: CVE-2025-69720
+Severity:      HIGH
+Package:       libtinfo6
+Installed:     6.5+20250216-2
+Fixed Version: 
+Title:         ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.
+Link:          https://avd.aquasec.com/nvd/cve-2025-69720
+-------------------------------------------
+Vulnerability: CVE-2026-29111
+Severity:      HIGH
+Package:       libudev1
+Installed:     257.9-1~deb13u1
+Fixed Version: 
+Title:         systemd: systemd: Arbitrary code execution or Denial of Service via spurious IPC API call data
+Link:          https://avd.aquasec.com/nvd/cve-2026-29111
+-------------------------------------------
+Vulnerability: CVE-2025-69720
+Severity:      HIGH
+Package:       ncurses-base
+Installed:     6.5+20250216-2
+Fixed Version: 
+Title:         ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.
+Link:          https://avd.aquasec.com/nvd/cve-2025-69720
+-------------------------------------------
+Vulnerability: CVE-2025-69720
+Severity:      HIGH
+Package:       ncurses-bin
+Installed:     6.5+20250216-2
+Fixed Version: 
+Title:         ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.
+Link:          https://avd.aquasec.com/nvd/cve-2025-69720
+-------------------------------------------
+Target: Python
+Type: python-pkg
+===========================================
+Vulnerability: CVE-2026-23949
+Severity:      HIGH
+Package:       jaraco.context
+Installed:     5.3.0
+Fixed Version: 6.1.0
+Title:         jaraco.context: jaraco.context: Path traversal via malicious tar archives
+Link:          https://avd.aquasec.com/nvd/cve-2026-23949
+-------------------------------------------
+Vulnerability: CVE-2024-47874
+Severity:      HIGH
+Package:       starlette
+Installed:     0.27.0
+Fixed Version: 0.40.0
+Title:         starlette: Starlette Denial of service (DoS) via multipart/form-data
+Link:          https://avd.aquasec.com/nvd/cve-2024-47874
+-------------------------------------------
+Vulnerability: CVE-2026-24049
+Severity:      HIGH
+Package:       wheel
+Installed:     0.45.1
+Fixed Version: 0.46.2
+Title:         wheel: wheel: Privilege Escalation or Arbitrary Code Execution via malicious wheel file unpacking
+Link:          https://avd.aquasec.com/nvd/cve-2026-24049
+-------------------------------------------
+Vulnerability: CVE-2026-24049
+Severity:      HIGH
+Package:       wheel
+Installed:     0.45.1
+Fixed Version: 0.46.2
+Title:         wheel: wheel: Privilege Escalation or Arbitrary Code Execution via malicious wheel file unpacking
+Link:          https://avd.aquasec.com/nvd/cve-2026-24049
+-------------------------------------------

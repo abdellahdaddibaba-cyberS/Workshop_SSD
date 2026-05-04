@@ -1,0 +1,7 @@
+"Phase","Tool","Vulnerability ID","Key Finding","Service","Impact","Recommendation","Severity","Status"
+"Secrets Scanning","Gitleaks","AWS-ACCESS-KEY","8 Hard-coded keys/tokens detected","Product Service","Complete AWS Compromise","Use Environment Variables","CRITICAL","Remediated"
+"SAST","Semgrep / Bandit","CWE-78 (RCE)","Remote Code Execution (eval) detected","User Service","Server Takeover","Remove eval() functions","HIGH","Remediated"
+"SCA","Trivy","CVE-2026-23745","Multiple vulnerable NPM packages","Payment Service","Arbitrary File Overwrite","Upgrade node-tar to 7.5.3+","HIGH","Pending Patch"
+"Container Image","Trivy","CVE-2026-27135","OS-level vulnerabilities found in Node:slim base","Gateway (Nginx)","Denial of Service","Update Nginx to latest Alpine","HIGH","Update Base Image"
+"DAST","OWASP ZAP","10038 (CSP)","Missing Security Headers (CSP, X-Frame)","API Gateway","XSS Vulnerability","Implement Content Security Policy","MEDIUM","Config Update Req"
+"IaC","Trivy","N/A","0 High-severity misconfigurations found","Global/Docker","N/A","N/A","LOW","Passed"

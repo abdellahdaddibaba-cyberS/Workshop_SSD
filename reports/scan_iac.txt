@@ -1,0 +1,22 @@
+﻿
+Target: gateway/Dockerfile
+Type: dockerfile
+===========================================
+Target: services/inventory-service/Dockerfile
+Type: dockerfile
+===========================================
+Target: services/notification-service/Dockerfile
+Type: dockerfile
+===========================================
+Target: services/order-service/Dockerfile
+Type: dockerfile
+===========================================
+Target: services/payment-service/Dockerfile
+Type: dockerfile
+===========================================
+Target: services/product-service/Dockerfile
+Type: dockerfile
+===========================================
+Target: services/user-service/Dockerfile
+Type: dockerfile
+===========================================
